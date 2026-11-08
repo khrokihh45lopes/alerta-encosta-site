@@ -1,0 +1,143 @@
+/* ==========================================================================
+   tokens.css: valores do sistema visual do Alerta Encosta
+   Direção: carta de risco geotécnico + placa de Defesa Civil.
+   Neutros puxados para argila (terra da encosta); acento azul de noite de chuva.
+   As cores de faixa (verde / amarelo / vermelho) são as MESMAS do OLED e do Python.
+   ========================================================================== */
+
+:root {
+  /* ---- Identidade ------------------------------------------------------- */
+  --font-display: 'Barlow Condensed', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif;
+  --font-text: 'Atkinson Hyperlegible', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
+
+  --hue-brand: 255; /* azul de noite de chuva */
+  --chroma-brand: 0.11;
+  --hue-neutral: 65; /* argila */
+  --chroma-neutral: 0.014;
+
+  --radius-base: 6px; /* firme, de sinalização */
+
+  /* ---- Neutros ---------------------------------------------------------- */
+  --neutral-0: oklch(0.995 calc(var(--chroma-neutral) * 0.3) var(--hue-neutral));
+  --neutral-50: oklch(0.972 calc(var(--chroma-neutral) * 0.7) var(--hue-neutral));
+  --neutral-100: oklch(0.945 var(--chroma-neutral) var(--hue-neutral));
+  --neutral-200: oklch(0.9 var(--chroma-neutral) var(--hue-neutral));
+  --neutral-300: oklch(0.8 var(--chroma-neutral) var(--hue-neutral));
+  --neutral-400: oklch(0.68 var(--chroma-neutral) var(--hue-neutral));
+  --neutral-500: oklch(0.54 var(--chroma-neutral) var(--hue-neutral));
+  --neutral-600: oklch(0.44 var(--chroma-neutral) var(--hue-neutral));
+  --neutral-700: oklch(0.36 var(--chroma-neutral) var(--hue-neutral));
+  --neutral-800: oklch(0.27 var(--chroma-neutral) var(--hue-neutral));
+  --neutral-900: oklch(0.21 var(--chroma-neutral) var(--hue-neutral));
+  --neutral-950: oklch(0.165 var(--chroma-neutral) var(--hue-neutral));
+
+  /* ---- Cores por papel -------------------------------------------------- */
+  color-scheme: light dark;
+
+  --bg: light-dark(var(--neutral-50), var(--neutral-950));
+  --surface: light-dark(var(--neutral-0), var(--neutral-900));
+  --surface-raised: light-dark(var(--neutral-0), var(--neutral-800));
+  --surface-sunken: light-dark(var(--neutral-100), oklch(0.135 var(--chroma-neutral) var(--hue-neutral)));
+
+  --border: light-dark(var(--neutral-200), oklch(1 0 0 / 0.11));
+  --border-strong: light-dark(var(--neutral-400), oklch(1 0 0 / 0.3));
+
+  --text: light-dark(var(--neutral-950), oklch(0.95 calc(var(--chroma-neutral) * 0.6) var(--hue-neutral)));
+  --text-muted: light-dark(var(--neutral-600), oklch(0.78 var(--chroma-neutral) var(--hue-neutral)));
+  --text-subtle: light-dark(oklch(0.5 var(--chroma-neutral) var(--hue-neutral)), oklch(0.7 var(--chroma-neutral) var(--hue-neutral)));
+
+  --accent: light-dark(oklch(0.45 var(--chroma-brand) var(--hue-brand)), oklch(0.78 calc(var(--chroma-brand) * 0.85) var(--hue-brand)));
+  --accent-hover: light-dark(oklch(0.38 var(--chroma-brand) var(--hue-brand)), oklch(0.85 calc(var(--chroma-brand) * 0.8) var(--hue-brand)));
+  --on-accent: light-dark(oklch(0.99 0.01 var(--hue-brand)), oklch(0.17 0.03 var(--hue-brand)));
+
+  --focus-ring: var(--accent);
+
+  /* ---- Faixas de risco ---------------------------------------------------
+     *-placa: fundo da placa de status. Fica mais forte conforme o perigo sobe:
+     verde suave -> amarelo de sinalização -> vermelho cheio.
+     *-cor: texto e ícones da faixa sobre a superfície neutra.
+     zona-*: preenchimento gráfico (régua, gráfico, bordas).                 */
+  --normal-placa: light-dark(oklch(0.92 0.06 152), oklch(0.3 0.06 152));
+  --normal-placa-texto: light-dark(oklch(0.27 0.07 152), oklch(0.94 0.05 152));
+  --normal-cor: light-dark(oklch(0.45 0.12 152), oklch(0.8 0.14 152));
+
+  --atencao-placa: oklch(0.85 0.155 87);
+  --atencao-placa-texto: oklch(0.2 0.045 60);
+  --atencao-cor: light-dark(oklch(0.5 0.11 70), oklch(0.85 0.15 87));
+
+  --perigo-placa: light-dark(oklch(0.5 0.2 27), oklch(0.48 0.185 27));
+  --perigo-placa-texto: oklch(0.985 0.01 27);
+  --perigo-cor: light-dark(oklch(0.5 0.2 27), oklch(0.75 0.15 27));
+  --perigo-suave: light-dark(oklch(0.95 0.03 27), oklch(0.29 0.07 27));
+
+  --zona-normal: oklch(0.68 0.15 152);
+  --zona-atencao: oklch(0.83 0.16 87);
+  --zona-perigo: oklch(0.6 0.21 27);
+
+  /* ---- Marca ------------------------------------------------------------ */
+  --marca-fundo: light-dark(oklch(0.29 0.06 var(--hue-brand)), oklch(0.92 0.02 var(--hue-neutral)));
+  --marca-terra: oklch(0.65 0.09 58);
+  --marca-estaca: light-dark(oklch(0.97 0.01 var(--hue-neutral)), oklch(0.25 0.05 var(--hue-brand)));
+  --marca-bandeira: oklch(0.62 0.21 27);
+
+  /* ---- Tipografia: corpo grande, pensado para idosos e telas pequenas ----- */
+  --text-xs: 0.875rem;
+  --text-sm: 1rem;
+  --text-base: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: clamp(1.375rem, 1.3rem + 0.3vw, 1.625rem);
+  --text-2xl: clamp(1.625rem, 1.45rem + 0.8vw, 2.125rem);
+  --text-3xl: clamp(2.125rem, 1.75rem + 1.6vw, 3rem);
+
+  --leading-tight: 1.05;
+  --leading-snug: 1.25;
+  --leading-normal: 1.55;
+
+  --tracking-tight: -0.01em;
+  --tracking-wide: 0.08em;
+
+  --measure: 62ch;
+
+  /* ---- Espaço (base 4px) ------------------------------------------------ */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --container: 76rem;
+
+  /* ---- Raio ------------------------------------------------------------- */
+  --radius-sm: calc(var(--radius-base) * 0.5);
+  --radius-md: var(--radius-base);
+  --radius-lg: calc(var(--radius-base) * 2);
+  --radius-full: 999px;
+
+  /* ---- Sombra (tingida de argila) --------------------------------------- */
+  --shadow-tint: 0.22 0.03 var(--hue-neutral);
+  --shadow-1: 0 1px 2px oklch(var(--shadow-tint) / 0.08), 0 1px 1px oklch(var(--shadow-tint) / 0.05);
+  --shadow-2: 0 2px 4px -1px oklch(var(--shadow-tint) / 0.07), 0 10px 22px -6px oklch(var(--shadow-tint) / 0.14);
+
+  /* ---- Movimento -------------------------------------------------------- */
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --dur-4: 560ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --z-sticky: 100;
+  --z-toast: 400;
+}
+
+/* Alternância manual de tema (useTema muda este atributo na tag <html>). */
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
