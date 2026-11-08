@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+
+# temporários de ferramentas de teste
+.playwright-cli/
+.taste-skill/
+
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Alerta Encosta: avisa o morador de encosta quando o solo encharca e a terra começa a se mover." />
+    <meta name="theme-color" content="#f6f3ee" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Alerta Encosta</title>
+    <script>
+      // Aplica o tema salvo antes de desenhar a página (evita piscar claro -> escuro).
+      try {
+        var salvo = localStorage.getItem('alerta-encosta:tema')
+        if (salvo === 'escuro') document.documentElement.dataset.theme = 'dark'
+        if (salvo === 'claro') document.documentElement.dataset.theme = 'light'
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

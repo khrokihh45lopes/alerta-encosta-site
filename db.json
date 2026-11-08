@@ -1,0 +1,31 @@
+{
+  "relatos": [
+    {
+      "id": 1,
+      "tipo": "Vala ou canaleta entupida",
+      "local": "Canaleta da escadaria principal, perto da quadra",
+      "gravidade": "media",
+      "descricao": "Folhas e entulho tampando a canaleta. Na última chuva a água desceu pela escada.",
+      "status": "aberto",
+      "criadoEm": "2026-11-02T09:15:00-03:00"
+    },
+    {
+      "id": 2,
+      "tipo": "Rachadura em parede ou chão",
+      "local": "Beco 3, casa de muro azul",
+      "gravidade": "alta",
+      "descricao": "A rachadura na parede dos fundos aumentou depois da chuva de ontem.",
+      "status": "em_analise",
+      "criadoEm": "2026-11-03T22:40:00-03:00"
+    },
+    {
+      "id": 3,
+      "tipo": "Lixo ou entulho na encosta",
+      "local": "Atrás da caixa d'água da associação",
+      "gravidade": "baixa",
+      "descricao": "Sacos de lixo e restos de obra jogados no barranco.",
+      "status": "resolvido",
+      "criadoEm": "2026-10-28T16:05:00-03:00"
+    }
+  ]
+}
