@@ -1,0 +1,246 @@
+{
+  "fonte": "SIMULADO - dados gerados pela equipe para testar o programa sem internet (noite de chuva forte hipotetica, uma leitura a cada 10 min). Este arquivo e sobrescrito na primeira busca bem-sucedida no ThingSpeak.",
+  "salvo_em": "2026-11-04T00:00:00-03:00",
+  "feeds": [
+    {
+      "created_at": "2026-11-03T20:00:00Z",
+      "entry_id": 1,
+      "field1": "36.1",
+      "field2": "0.25",
+      "field3": "7.1",
+      "field4": "0"
+    },
+    {
+      "created_at": "2026-11-03T20:10:00Z",
+      "entry_id": 2,
+      "field1": "37.8",
+      "field2": "0.27",
+      "field3": "8.9",
+      "field4": "0"
+    },
+    {
+      "created_at": "2026-11-03T20:20:00Z",
+      "entry_id": 3,
+      "field1": "41.2",
+      "field2": "0.32",
+      "field3": "12.5",
+      "field4": "0"
+    },
+    {
+      "created_at": "2026-11-03T20:30:00Z",
+      "entry_id": 4,
+      "field1": "46.3",
+      "field2": "0.36",
+      "field3": "17.7",
+      "field4": "0"
+    },
+    {
+      "created_at": "2026-11-03T20:40:00Z",
+      "entry_id": 5,
+      "field1": "51.9",
+      "field2": "0.35",
+      "field3": "23.3",
+      "field4": "0"
+    },
+    {
+      "created_at": "2026-11-03T20:50:00Z",
+      "entry_id": 6,
+      "field1": "57.8",
+      "field2": "0.5",
+      "field3": "29.8",
+      "field4": "0"
+    },
+    {
+      "created_at": "2026-11-03T21:00:00Z",
+      "entry_id": 7,
+      "field1": "62.6",
+      "field2": "0.57",
+      "field3": "34.9",
+      "field4": "0"
+    },
+    {
+      "created_at": "2026-11-03T21:10:00Z",
+      "entry_id": 8,
+      "field1": "68.1",
+      "field2": "0.7",
+      "field3": "40.9",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-03T21:20:00Z",
+      "entry_id": 9,
+      "field1": "71.8",
+      "field2": "0.81",
+      "field3": "45.0",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-03T21:30:00Z",
+      "entry_id": 10,
+      "field1": "76.2",
+      "field2": "0.95",
+      "field3": "50.0",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-03T21:40:00Z",
+      "entry_id": 11,
+      "field1": "80.2",
+      "field2": "1.32",
+      "field3": "55.5",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-03T21:50:00Z",
+      "entry_id": 12,
+      "field1": "83.9",
+      "field2": "1.77",
+      "field3": "61.0",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-03T22:00:00Z",
+      "entry_id": 13,
+      "field1": "87.4",
+      "field2": "2.58",
+      "field3": "67.7",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-03T22:10:00Z",
+      "entry_id": 14,
+      "field1": "88.7",
+      "field2": "3.36",
+      "field3": "72.1",
+      "field4": "2"
+    },
+    {
+      "created_at": "2026-11-03T22:20:00Z",
+      "entry_id": 15,
+      "field1": "90.3",
+      "field2": "3.91",
+      "field3": "75.6",
+      "field4": "2"
+    },
+    {
+      "created_at": "2026-11-03T22:30:00Z",
+      "entry_id": 16,
+      "field1": "91.2",
+      "field2": "4.22",
+      "field3": "76.9",
+      "field4": "2"
+    },
+    {
+      "created_at": "2026-11-03T22:40:00Z",
+      "entry_id": 17,
+      "field1": "91.0",
+      "field2": "4.35",
+      "field3": "77.4",
+      "field4": "2"
+    },
+    {
+      "created_at": "2026-11-03T22:50:00Z",
+      "entry_id": 18,
+      "field1": "89.9",
+      "field2": "4.31",
+      "field3": "77.1",
+      "field4": "2"
+    },
+    {
+      "created_at": "2026-11-03T23:00:00Z",
+      "entry_id": 19,
+      "field1": "88.3",
+      "field2": "4.31",
+      "field3": "75.5",
+      "field4": "2"
+    },
+    {
+      "created_at": "2026-11-03T23:10:00Z",
+      "entry_id": 20,
+      "field1": "85.3",
+      "field2": "4.21",
+      "field3": "72.1",
+      "field4": "2"
+    },
+    {
+      "created_at": "2026-11-03T23:20:00Z",
+      "entry_id": 21,
+      "field1": "83.2",
+      "field2": "4.15",
+      "field3": "69.8",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-03T23:30:00Z",
+      "entry_id": 22,
+      "field1": "80.8",
+      "field2": "4.08",
+      "field3": "67.1",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-03T23:40:00Z",
+      "entry_id": 23,
+      "field1": "79.7",
+      "field2": "4.07",
+      "field3": "66.0",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-03T23:50:00Z",
+      "entry_id": 24,
+      "field1": null,
+      "field2": "4.06",
+      "field3": null,
+      "field4": null
+    },
+    {
+      "created_at": "2026-11-04T00:00:00Z",
+      "entry_id": 25,
+      "field1": "78.8",
+      "field2": "4.11",
+      "field3": "65.2",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-04T00:10:00Z",
+      "entry_id": 26,
+      "field1": "77.9",
+      "field2": "3.99",
+      "field3": "63.9",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-04T00:20:00Z",
+      "entry_id": 27,
+      "field1": "79.8",
+      "field2": "3.98",
+      "field3": "65.7",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-04T00:30:00Z",
+      "entry_id": 28,
+      "field1": "83.3",
+      "field2": "4.11",
+      "field3": "69.7",
+      "field4": "1"
+    },
+    {
+      "created_at": "2026-11-04T00:40:00Z",
+      "entry_id": 29,
+      "field1": "86.1",
+      "field2": "4.27",
+      "field3": "73.2",
+      "field4": "2"
+    },
+    {
+      "created_at": "2026-11-04T00:50:00Z",
+      "entry_id": 30,
+      "field1": "89.2",
+      "field2": "4.57",
+      "field3": "77.5",
+      "field4": "2"
+    }
+  ]
+}
