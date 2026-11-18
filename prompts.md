@@ -94,6 +94,33 @@ Ferramenta: **Claude Code** (Claude Opus 5.5) no VS Code.
 
 ---
 
+## Sessão 4 · 18/11/2026 · Revisão completa com skills
+
+**Quem:** Victor Lopes Tavares da Fonseca
+
+**Prompt (texto exato):** *"so o de py tinha mais coisa agr confira tudo cada linha tudo pra ver se acha algum erro e confira todos os requisitos use as skills para ajudar"*
+
+**O que a IA fez:** leu os requisitos das 7 disciplinas no PDF do desafio e conferiu cada um nos arquivos. Revisou o código linha por linha com a skill `code-review` (Python, ESP32, site e matemática) e testou o site com a skill `playwright-cli`. A revisão achou 10 pontos, e a IA corrigiu 9:
+
+| Parte | Problema | Correção | Como foi testado |
+|---|---|---|---|
+| ESP32 × Python × site | Perto de 40 e 70, o ESP32 classificava com o risco sem arredondar, e os outros dois recalculavam com os valores arredondados (ex.: solo 30,0 % e 9,99° dava NORMAL no OLED e ATENÇÃO no site) | `arredondar` no `sketch.ino`: medidas e risco com a mesma precisão publicada, antes de classificar; o OLED mostra o risco com 1 casa | Força bruta em 229 mil combinações, imitando o float do ESP32: de 394 diferenças para 0 |
+| Python | Um campo "nan" ou "inf" virava nível 100 | `ler_medidas` descarta valores não finitos (`math.isfinite`) | Teste com nan, inf e -inf |
+| Python | Um `historico.json` editado à mão (horário sem fuso, risco em texto) derrubava o menu | `leitura_valida` confere o fuso e os números (`numero_valido`) | Teste com 6 itens inválidos |
+| Python | O PDF pede "entry_id num set" | `mesclar_historico` usa um set de pares (entry_id, horário) | Busca duas vezes: a segunda dá 0 novas |
+| Python | CSV com ponto decimal: o Excel em português não lê como número | `numero_br`: vírgula decimal | Leitura do CSV gerado |
+| Python | A busca por horário errava na virada do ano | `ler_horario` usa o ano anterior quando a data cairia depois da última leitura | Teste com histórico de 30/12 a 02/01 |
+| Site | Mostrava "Ao vivo" mesmo com a leitura de horas atrás | `FonteDados`: com mais de 5 min sem leitura nova, avisa que o sensor parou e mostra data e hora | No navegador, com o canal real |
+| Site | Primeira visita sem rede: mostrava a demonstração e escondia o botão Atualizar | O botão aparece sempre que há canal, e o texto diz "Sem conexão com o sensor" | No navegador, com o ThingSpeak bloqueado |
+| Site | Salvar a edição de um relato desfazia a mudança de situação feita no cartão; excluir o relato em edição deixava o formulário aberto | `SecaoRelatos` usa a versão mais nova do relato e fecha o formulário ao excluir | No navegador, com a API local (cópia do `db.json`) |
+| Matemática | O `verificacao_simbolica.py` não testava as funções do modelo, e a conta do total nunca podia falhar | A seção 5 compara as fórmulas do SymPy com as 6 funções do `modelo_encosta.py` | 19 de 19 conferem; com um sinal trocado de propósito no código, acusou o erro |
+
+Não mudou: `contar_altas_finais` e `contar_quedas_finais` são parecidas, mas separadas ficam mais fáceis de explicar. Também acrescentou a seção "Objetivo da solução" no README do sensor (item exigido em Edge) e atualizou os READMEs, o relatório de Experiência (RN07 e riscos) e o relatório de Matemática (PDF gerado de novo).
+
+**O que a equipe precisa conferir:** colar o `sketch.ino` novo no Wokwi e salvar; saber explicar o arredondamento no ESP32, o par (entry_id, horário) no histórico e o aviso de sensor parado no site.
+
+---
+
 ## Modelo para os próximos prompts
 
 ```
