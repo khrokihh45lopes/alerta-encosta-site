@@ -71,7 +71,7 @@ Ferramenta: **Claude Code** (Claude Opus 5.5) no VS Code.
 1. *"oq falta fazer"*
 2. *"como crio o thingspeak"*
 3. A Write API Key e o número do canal, sem mais texto.
-4. Prints dos gráficos do ThingSpeak e o link do projeto no Wokwi, sem mais texto.
+4. Prints dos gráficos do ThingSpeak, da simulação no Wokwi e da execução do Python, e o link do projeto no Wokwi, sem mais texto.
 
 **O que a IA fez:**
 
@@ -80,9 +80,11 @@ Ferramenta: **Claude Code** (Claude Opus 5.5) no VS Code.
 - Achou um problema no Python: com o canal configurado mas ainda **vazio**, a opção 1 gravava a lista vazia por cima do `backup.json` e apagava os dados simulados. A IA corrigiu `obter_feeds`: o backup só é sobrescrito quando o canal devolve pelo menos uma leitura válida; se não, o programa usa o backup. O site já fazia isso (`useLeiturasEncosta`). Testou os dois casos (canal vazio e campos vazios) e o `backup.json` não mudou.
 - Conferiu os links do Wokwi. O primeiro (`305569599398609473`) era o exemplo "wifi-scan" do próprio Wokwi, não o nosso projeto. O segundo é o nosso: baixou o projeto e comparou com o repositório (`sketch.ino` idêntico, mesmas peças e ligações). Esse link foi para o README do sensor. O projeto salvo ficou sem o `libraries.txt`.
 - Olhou os prints dos gráficos e comparou cada leitura do canal com o Python (o risco bateu em todas). Apontou que os primeiros testes tinham inclinação de até 125° (estaca de cabeça para baixo) e que o PERIGO foi feito com 63°. Sugeriu limpar o canal e seguir o roteiro do README (accelX 0.10 = 5,7°) antes do print.
+- Salvou os prints do Wokwi (NORMAL, ATENÇÃO e PERIGO) e dos gráficos em `esp32/evidencias/` e mostrou as imagens no README do sensor.
+- Pelo print do Python (*"6 leituras · 0 novas · histórico 29"*), achou outro problema: o histórico juntava as leituras pelo `entry_id`, e o canal real recomeça do 1 (canal novo ou depois do Clear Channel), com os mesmos números da noite simulada. As leituras reais eram descartadas como repetidas. A IA trocou a chave para o horário (`mesclar_historico`) e passou a ordenar o histórico por horário, que é o que a busca binária precisa. Testou: 6 novas na primeira busca, 0 na segunda, e a busca binária certa nos dois dias.
 - Conferiu pela API pública que o canal está aberto, com os 4 campos na ordem certa, e que recebeu a primeira entrada do Wokwi (#1: solo 46,3 %, inclinação 45°, risco 56,3, ATENÇÃO), o mesmo valor que a fórmula dá.
 
-**O que a equipe precisa conferir:** saber explicar por que uma busca vazia não pode apagar o `backup.json` (ele é o plano B quando não há internet) e por que 45° de inclinação com o solo seco dá só ATENÇÃO (a inclinação sozinha vale no máximo 40 pontos).
+**O que a equipe precisa conferir:** saber explicar por que uma busca vazia não pode apagar o `backup.json` (ele é o plano B quando não há internet), por que o histórico usa o horário e não o `entry_id` para não repetir leituras e por que 45° de inclinação com o solo seco dá só ATENÇÃO (a inclinação sozinha vale no máximo 40 pontos).
 
 ---
 
