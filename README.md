@@ -30,7 +30,7 @@ Site em **React + Vite** onde o morador de encosta vê, em 3 segundos, se está 
 
 | Nome completo | RM | Turma |
 |---|---|---|
-| Victor Lopes Tavares da Fonseca | 571315 | **TODO** |
+| Victor Lopes Tavares da Fonseca | 571315 | 1ESSRA-2026 |
 
 ## Como as partes conversam
 

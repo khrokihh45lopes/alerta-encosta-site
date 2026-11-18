@@ -73,6 +73,7 @@ Ferramenta: **Claude Code** (Claude Opus 5.5) no VS Code.
 3. A Write API Key e o número do canal, sem mais texto.
 4. Prints dos gráficos do ThingSpeak, da simulação no Wokwi e da execução do Python, e o link do projeto no Wokwi, sem mais texto.
 5. *"n vou fazer a conversa use dados de entrevistas na internet"*, com o nome completo e o RM do único integrante.
+6. O link do Wokwi de novo e a turma, sem mais texto.
 
 **O que a IA fez:**
 
@@ -84,7 +85,7 @@ Ferramenta: **Claude Code** (Claude Opus 5.5) no VS Code.
 - Salvou os prints do Wokwi (NORMAL, ATENÇÃO e PERIGO) e dos gráficos em `esp32/evidencias/` e mostrou as imagens no README do sensor.
 - Pelo print do Python (*"6 leituras · 0 novas · histórico 29"*), achou outro problema: o histórico juntava as leituras pelo `entry_id`, e o canal real recomeça do 1 (canal novo ou depois do Clear Channel), com os mesmos números da noite simulada. As leituras reais eram descartadas como repetidas. A IA trocou a chave para o horário (`mesclar_historico`) e passou a ordenar o histórico por horário, que é o que a busca binária precisa. Testou: 6 novas na primeira busca, 0 na segunda, e a busca binária certa nos dois dias.
 - Como a conversa com um morador não foi feita, trocou a entrevista por **depoimentos públicos com fonte**. Pesquisou reportagens (Lunetas, 2021; Folhapress, 2023; Agência Brasil, 2019) e um estudo científico (Melo et al., *Natural Hazards*, 2017), baixou as matérias para copiar as falas exatas e reescreveu a seção 3.1 do relatório de Experiência (`.md` e `.docx`). O relatório diz com clareza que não houve entrevista presencial, e as pessoas aparecem sem o nome, como pede a regra de dados pessoais. Por causa dos depoimentos, a história 5.5 (ponto de apoio no mapa) subiu de C para S.
-- Preencheu o integrante (projeto individual) nos READMEs, no `Integrantes.md`, na capa da matemática (gerou o PDF de novo) e no relatório de Experiência. Adaptou o roteiro do pitch para uma pessoa só e pôs a fala da moradora no beat 3. Bairro de referência: Morro do Borel (Tijuca). Validou o `.docx` com o verificador do formato Word.
+- Preencheu o integrante (projeto individual) nos READMEs, no `Integrantes.md`, na capa da matemática (gerou o PDF de novo) e no relatório de Experiência. Adaptou o roteiro do pitch para uma pessoa só e pôs a fala da moradora no beat 3. Bairro de referência: Morro do Borel (Tijuca). Validou o `.docx` com o verificador do formato Word. Depois, colocou a turma (1ESSRA-2026) nas tabelas e nas capas e conferiu que o projeto do Wokwi passou a ter o `libraries.txt` com as 5 bibliotecas.
 - Conferiu pela API pública que o canal está aberto, com os 4 campos na ordem certa, e que recebeu a primeira entrada do Wokwi (#1: solo 46,3 %, inclinação 45°, risco 56,3, ATENÇÃO), o mesmo valor que a fórmula dá.
 
 **O que a equipe precisa conferir:** saber explicar por que uma busca vazia não pode apagar o `backup.json` (ele é o plano B quando não há internet), por que o histórico usa o horário e não o `entry_id` para não repetir leituras, de onde vieram os depoimentos da seção 3.1 (e por que eles não são uma entrevista própria) e por que 45° de inclinação com o solo seco dá só ATENÇÃO (a inclinação sozinha vale no máximo 40 pontos).
