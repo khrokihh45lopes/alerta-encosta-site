@@ -417,7 +417,8 @@ code {
   color: var(--normal-cor);
 }
 .fonte[data-origem='cache'] .fonte__texto,
-.fonte[data-origem='demo'] .fonte__texto {
+.fonte[data-origem='demo'] .fonte__texto,
+.fonte[data-origem='parado'] .fonte__texto {
   color: var(--atencao-cor);
 }
 
