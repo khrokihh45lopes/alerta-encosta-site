@@ -1,9 +1,7 @@
-# Integrantes · Alerta Encosta
+# Integrante · Alerta Encosta
 
-| Nome completo | RM | Turma | Partes em que mais atuou |
+| Nome completo | RM | Turma | Partes em que atuou |
 |---|---|---|---|
-| **TODO** | **TODO** | **TODO** | **TODO** |
-| **TODO** | **TODO** | **TODO** | **TODO** |
-| **TODO** | **TODO** | **TODO** | **TODO** |
+| Victor Lopes Tavares da Fonseca | 571315 | **TODO** | Todas (projeto individual) |
 
-Todos os integrantes participaram e sabem explicar o projeto inteiro, não só a própria parte.
+Projeto feito por um aluno só (a regra da GS permite equipes de até 3). O integrante sabe explicar o projeto inteiro: sensor, Python, matemática, site, experiência e pitch.

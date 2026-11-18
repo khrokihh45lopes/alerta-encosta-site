@@ -17,7 +17,7 @@ Site em **React + Vite** onde o morador de encosta vê, em 3 segundos, se está 
 | | |
 |---|---|
 | **Nome da CitizenTech** | Alerta Encosta |
-| **Cidade e bairro** | Rio de Janeiro · **TODO:** bairro/comunidade da encosta observada |
+| **Cidade e bairro** | Rio de Janeiro · Morro do Borel, Tijuca (comunidade de referência dos depoimentos públicos usados na pesquisa) |
 | **Cidadão beneficiado** | Morador de comunidade em encosta com risco de deslizamento, principalmente idosos e famílias que dormem em casa durante a chuva; e o agente comunitário de Defesa Civil (NUDEC) que avisa os vizinhos |
 | **Problema, em uma frase** | Em noite de chuva forte, o morador de encosta não sabe se o barranco atrás da casa está no limite, e a sirene só considera a chuva da região, não o solo daquela encosta |
 | **Como funciona** | Um ESP32 na encosta mede umidade do solo e inclinação do terreno, calcula um Índice de Risco (0 a 100) e acende verde / amarelo / vermelho. Os dados vão para o ThingSpeak; um programa em Python analisa a tendência e o histórico; um site mostra ao morador o que fazer e recebe relatos da comunidade |
@@ -26,13 +26,11 @@ Site em **React + Vite** onde o morador de encosta vê, em 3 segundos, se está 
 | **Indicador de impacto** | Minutos de antecedência entre o alerta de ATENÇÃO e o solo crítico (meta ≥ 60 min; o modelo dá 1h51) · % de moradores da área que confirmam ter recebido o alerta · relatos de risco resolvidos por mês |
 | **ODS conectados** | **11** (meta 11.5: reduzir mortes e pessoas afetadas por desastres, protegendo os mais vulneráveis) · **13** (meta 13.1: resiliência a riscos climáticos; 13.3: alerta precoce e educação) · **10** (as áreas de risco concentram famílias de baixa renda) |
 
-## Integrantes
+## Integrante
 
 | Nome completo | RM | Turma |
 |---|---|---|
-| **TODO** | **TODO** | **TODO** |
-| **TODO** | **TODO** | **TODO** |
-| **TODO** | **TODO** | **TODO** |
+| Victor Lopes Tavares da Fonseca | 571315 | **TODO** |
 
 ## Como as partes conversam
 
