@@ -21,8 +21,16 @@ export function SecaoRelatos() {
   const visiveis = filtro === 'todos' ? relatos : relatos.filter((relato) => relato.status === filtro)
 
   async function salvarEdicao(valores) {
-    await editar(emEdicao, valores)
+    // Usa a versão mais nova do relato: a situação pode ter mudado no cartão
+    // enquanto o formulário estava aberto, e a cópia antiga desfaria essa mudança.
+    const atual = relatos.find((relato) => relato.id === emEdicao.id)
+    if (atual) await editar(atual, valores)
     setEmEdicao(null)
+  }
+
+  async function excluir(id) {
+    await remover(id)
+    if (emEdicao?.id === id) setEmEdicao(null) // o relato em edição deixou de existir
   }
 
   return (
@@ -84,7 +92,7 @@ export function SecaoRelatos() {
                     document.getElementById('relatos')?.scrollIntoView({ block: 'start' })
                   }}
                   onMudarStatus={mudarStatus}
-                  onExcluir={remover}
+                  onExcluir={excluir}
                 />
               </li>
             ))}
