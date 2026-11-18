@@ -62,6 +62,30 @@ Ferramenta: **Claude Code** (Claude Opus 5.5) no VS Code.
 
 ---
 
+## Sessão 3 · 18/11/2026 · Canal do ThingSpeak
+
+**Quem:** **TODO** (integrante que conduziu a sessão)
+
+**Prompts (texto exato):**
+
+1. *"oq falta fazer"*
+2. *"como crio o thingspeak"*
+3. A Write API Key e o número do canal, sem mais texto.
+4. Prints dos gráficos do ThingSpeak e o link do projeto no Wokwi, sem mais texto.
+
+**O que a IA fez:**
+
+- Listou as pendências e explicou passo a passo como criar a conta e o canal (4 campos, canal público, chaves).
+- Colocou o número do canal (**3584820**) no `CONFIG` do `main.py`, no `.env` e no `.env.example` do site e no README do sensor. Colocou a Write API Key no `sketch.ino`.
+- Achou um problema no Python: com o canal configurado mas ainda **vazio**, a opção 1 gravava a lista vazia por cima do `backup.json` e apagava os dados simulados. A IA corrigiu `obter_feeds`: o backup só é sobrescrito quando o canal devolve pelo menos uma leitura válida; se não, o programa usa o backup. O site já fazia isso (`useLeiturasEncosta`). Testou os dois casos (canal vazio e campos vazios) e o `backup.json` não mudou.
+- Conferiu os links do Wokwi. O primeiro (`305569599398609473`) era o exemplo "wifi-scan" do próprio Wokwi, não o nosso projeto. O segundo é o nosso: baixou o projeto e comparou com o repositório (`sketch.ino` idêntico, mesmas peças e ligações). Esse link foi para o README do sensor. O projeto salvo ficou sem o `libraries.txt`.
+- Olhou os prints dos gráficos e comparou cada leitura do canal com o Python (o risco bateu em todas). Apontou que os primeiros testes tinham inclinação de até 125° (estaca de cabeça para baixo) e que o PERIGO foi feito com 63°. Sugeriu limpar o canal e seguir o roteiro do README (accelX 0.10 = 5,7°) antes do print.
+- Conferiu pela API pública que o canal está aberto, com os 4 campos na ordem certa, e que recebeu a primeira entrada do Wokwi (#1: solo 46,3 %, inclinação 45°, risco 56,3, ATENÇÃO), o mesmo valor que a fórmula dá.
+
+**O que a equipe precisa conferir:** saber explicar por que uma busca vazia não pode apagar o `backup.json` (ele é o plano B quando não há internet) e por que 45° de inclinação com o solo seco dá só ATENÇÃO (a inclinação sozinha vale no máximo 40 pontos).
+
+---
+
 ## Modelo para os próximos prompts
 
 ```
