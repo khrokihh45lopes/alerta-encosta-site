@@ -107,9 +107,10 @@ O código não muda: json-server e MockAPI seguem o mesmo padrão REST (`GET/POS
 
 A placa usa um plano B em camadas, e diz no topo de onde veio a leitura:
 
-1. **Ao vivo:** o ThingSpeak respondeu.
-2. **Sem internet:** mostra a última leitura guardada no aparelho (localStorage).
-3. **Demonstração:** canal não configurado; usa os mesmos dados simulados do `backup.json` do programa em Python.
+1. **Ao vivo:** o ThingSpeak respondeu, com a data e a hora da leitura.
+2. **Sensor parado:** o ThingSpeak respondeu, mas a leitura mais nova tem mais de 5 minutos (o ESP32 publica a cada 20 s). O topo avisa que a faixa pode estar velha e manda seguir a sirene e a Defesa Civil.
+3. **Sem internet:** mostra a última leitura guardada no aparelho (localStorage).
+4. **Demonstração:** canal não configurado, ou primeira visita sem conseguir falar com o sensor; usa os dados simulados do programa em Python. Com canal configurado, o botão **Atualizar** continua na tela para tentar de novo.
 
 As fontes vão empacotadas com o site (não dependem do Google Fonts).
 
