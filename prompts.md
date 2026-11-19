@@ -20,7 +20,6 @@ Ferramenta de apoio: **Claude Code** no VS Code (apoio para rascunhos, revisão 
 **Etapas para conclusão e validação:**
 - [ ] Registrar o levantamento/referências de vivência em área de encosta em `docs/experiencia/`
 - [ ] Vincular o projeto no Wokwi (`481157574379012097`) e o canal no ThingSpeak (`3584820`) nos READMEs
-- [ ] Completar identificações, links (`TODO`) e preencher os `TODO`s do `AI.md`
 - [ ] Gravar o vídeo do pitch (até 3 minutos, com a personagem Dona Marlene)
 - [ ] Revisar e dominar cada função e linha implementada para explicação oral
 

@@ -4,12 +4,6 @@
 
 Site em **React + Vite** onde o morador de encosta vê, em 3 segundos, se está seguro e o que fazer agora. A cor da placa muda com o risco que o sensor mede na encosta.
 
-| | |
-|---|---|
-| Site publicado | **TODO:** link do deploy (Vercel/Netlify), se houver |
-| Vídeo pitch | **TODO:** link do YouTube (não listado) |
-
-
 > **CitizenTech da Minha Cidade** · FIAP Global Solution 2026.2 · Engenharia de Software, 1º ano · Rio de Janeiro. Este repositório é a parte **Interface + Interação (Front-end Design e Web Development)**. Cada disciplina tem a sua entrega; a Ficha abaixo é a mesma em todas.
 
 ## Ficha da CitizenTech
