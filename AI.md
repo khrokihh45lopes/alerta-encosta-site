@@ -1,33 +1,32 @@
 # Uso de IA · Front-end Design e Web Development
 
-## Ferramenta
+## Ferramenta e contexto
 
 | | |
 |---|---|
-| Ferramenta | Claude Code (modelo Claude Opus 5.5, da Anthropic), dentro do VS Code |
-| Quando | Novembro de 2026, período da GS |
-| Prompts | Registrados em [`prompts.md`](prompts.md) |
+| Ferramenta de apoio | Claude Code no VS Code (apoio para estrutura, rascunhos, revisão e testes) |
+| Período | Novembro de 2026 (GS 2026.2 · entrega em 19/11/2026 às 23h55 via Teams) |
+| Registro | Detalhado em [`prompts.md`](prompts.md) |
 
-## Para que usamos
+## Como usamos no desenvolvimento e na revisão
 
-| Etapa | O que a IA fez | O que a equipe fez |
+| Etapa | Apoio recebido da IA | Atuação, ajustes e validação |
 |---|---|---|
-| Estrutura | Propôs a organização em `domain/` (regras), `services/` (API), `hooks/` (estado) e `components/` (tela) | **TODO:** revisar e explicar a separação com as próprias palavras |
-| Código React | Gerou a primeira versão dos componentes, dos 4 custom hooks e do CRUD | **TODO:** o que vocês mudaram, testaram ou reescreveram |
-| Visual | Propôs a direção visual (placa de Defesa Civil + curvas de nível), as cores das faixas e a fonte para baixa visão | **TODO:** o que vocês aprovaram ou ajustaram |
-| Testes | Rodou um teste automático no navegador (criar, editar, mudar situação, excluir, simulador, checklist, tema) e revisou capturas no celular e no desktop | **TODO:** testes manuais da equipe, inclusive no celular de alguém real |
-| Revisão (08/11) | Revisou o código com regras de boas práticas de React (Vercel) e de interface web: `useRef` para ignorar resposta velha, pausa da atualização com a aba escondida, foco no primeiro campo com erro, `autoComplete="off"` no ponto de referência, menu do celular com sinal de rolagem. Repetiu o teste automático completo, inclusive com a API de relatos fora do ar | **TODO:** explicar com as próprias palavras por que o `useRef` não redesenha a tela e por que o `visibilitychange` ajuda quem está com o celular bloqueado |
+| Estrutura | Sugestão de divisão em `domain/` (regras: risco, relatos, sinais, formatos), `services/` (`http`, `thingspeakApi`, `relatosApi`, `cacheLeituras`), `hooks/` (`useTema`, `useLeiturasEncosta`, `useRelatos`, `useFormRelato`) e `components/` (interface) | **TODO:** revisar e explicar essa separação com as próprias palavras |
+| Código React | Rascunho inicial dos componentes, dos 4 custom hooks e do fluxo de CRUD (com `json-server` / MockAPI) | **TODO:** registrar o que foi ajustado, testado ou reescrito na revisão |
+| Direção visual | Sugestões de identidade visual (referência de placa de Defesa Civil e curvas de nível), cores das faixas (NORMAL/ATENÇÃO/PERIGO) e legibilidade | **TODO:** registrar o que foi aprovado ou adaptado na interface |
+| Testes | Apoio na execução de cenários automatizados no navegador (CRUD, simulador, checklist, tema) e conferência de layout em telas mobile e desktop | **TODO:** registrar testes manuais realizados, inclusive em aparelho mobile |
+| Revisão pontual (08/11 e 18/11) | Apoio na conferência de boas práticas de React e interface: `useRef` contra resposta obsoleta, pausa em aba oculta, foco no primeiro campo inválido, `autoComplete="off"`, sinalização de rolagem no mobile, aviso de leitura antiga (> 5 min) no plano B da placa, estado sem rede e sincronização em `SecaoRelatos` | **TODO:** explicar com as próprias palavras por que o `useRef` não redesenha a tela, como funcionam as camadas do plano B da placa e por que o `visibilitychange` ajuda na economia/estado |
 
-## O que conferimos antes de entregar
+## Conferências antes da entrega
 
-- [ ] Cada integrante sabe explicar `useTema`, `useLeiturasEncosta` (inclusive o `useRef`), `useRelatos` e `useFormRelato`
-- [ ] Sabemos explicar por que componente não faz `fetch`
-- [ ] Rodamos o CRUD com a API local e com o MockAPI
-- [ ] Os textos foram lidos por alguém que mora em encosta (ou parecido) e fazem sentido para essa pessoa
-- [ ] Os commits mostram a evolução feita pela equipe
+- [ ] Dominar e saber explicar `useTema`, `useLeiturasEncosta` (incluindo `useRef` e camadas do plano B), `useRelatos` e `useFormRelato`
+- [ ] Saber explicar por que os componentes não fazem `fetch` diretamente (isolamento em `services/`)
+- [ ] Validar o CRUD com a API local (porta 3001, via `npm run dev:tudo`) e com o MockAPI
+- [ ] Conferir se os textos fazem sentido para moradores de encosta (ex.: Morro do Borel) e NUDEC
+- [ ] Garantir que o histórico de commits reflita a evolução do projeto e gerar o ZIP via `git archive`
 
-## Limites que respeitamos
+## Critérios e limites observados
 
-- Nenhum dado pessoal real foi enviado à IA.
-- Os números da Defesa Civil (critério das sirenes) vieram de busca na web e estão com fonte; a confirmar com o órgão.
-- A IA não substitui a conversa com o morador: a pesquisa de campo é da equipe (ver `docs/experiencia/`).
+- Nenhum dado pessoal sensível foi informado nos prompts.
+- Referências numéricas sobre critérios de alerta/sirenes da Defesa Civil foram consultadas em fontes públicas e constam sujeitas a confirmação oficial.
