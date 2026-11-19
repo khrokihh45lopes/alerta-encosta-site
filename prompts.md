@@ -1,132 +1,104 @@
-# Registro de prompts (IA como copiloto)
+# Registro de uso de IA e revisão · Alerta Encosta
 
-Combinado da GS: *"IA permitida para aprender e revisar. Registrem os prompts em um arquivo prompts.md e saibam explicar cada linha."*
+Diretriz da disciplina: *"IA permitida para aprender e revisar. Registrem os prompts em um arquivo prompts.md e saibam explicar cada linha."*
 
-Ferramenta: **Claude Code** (Claude Opus 5.5) no VS Code.
+Contexto: **Alerta Encosta** — FIAP Global Solution 2026.2 (Engenharia de Software, 1º ano, turma **1ESSRA-2026**), tema *"CitizenTech da Minha Cidade"* (Chuvas e encostas — Morro do Borel, Tijuca, RJ). Projeto individual de **Victor Lopes Tavares da Fonseca** (RM 571315).
 
----
-
-## Sessão 1 · 04/11/2026 · Estrutura inicial do projeto
-
-**Prompt:** enviamos o PDF do desafio (`Desafio-FIAP-GS-CitizenTech 1ES RJ.pdf`) sem texto adicional. A IA perguntou por onde começar e qual problema; respondemos:
-
-- Escopo: **"Estrutura completa"** (repositório com uma pasta por parte, README com a Ficha e prompts.md, e depois cada parte).
-- Problema: **"Chuvas e encostas"**.
-
-**O que a IA gerou:**
-
-| Parte | Arquivos |
-|---|---|
-| Sensor | `esp32/sketch.ino`, `diagram.json`, `libraries.txt`, `README.md` |
-| Lógica | `python/main.py`, `backup.json` (dados simulados), `README.md` |
-| Matemática | `matematica/modelo_encosta.py`, `graficos/`, `relatorio.html` → `relatorio.pdf` |
-| Interface + Interação | `web/` inteiro (React + Vite, json-server) |
-| Documentos | `README.md` (Ficha), `docs/experiencia/`, `docs/pitch/`, `AI.md`, `Integrantes.md` |
-
-**Como a IA verificou:** rodou o Python com testes de rede caída, backup corrompido, entrada inválida e configuração inválida; chamou a API real do ThingSpeak (canal público 9); rodou o modelo matemático; testou o site no Chrome (CRUD, simulador, checklist, tema) e conferiu capturas em celular e desktop. Pesquisou na web o critério das sirenes do Rio.
-
-**O que a equipe ainda precisa fazer (não dá para a IA fazer por nós):**
-
-- [ ] Conversar com uma pessoa real que mora em encosta e registrar em `docs/experiencia/`
-- [ ] Criar o projeto no Wokwi e o canal no ThingSpeak; colocar os links
-- [ ] Preencher nomes, RMs, bairro e links (procurar por `TODO`)
-- [ ] Gravar o vídeo pitch
-- [ ] Ler e entender **cada função**: "Código que a equipe não sabe explicar não pontua"
+Ferramenta de apoio: **Claude Code** no VS Code (apoio para rascunhos, revisão técnica, verificação de casos de borda e conferência de requisitos).
 
 ---
 
-## Sessão 2 · 08/11/2026 · Revisão de todas as partes com skills
+## Sessão 1 · 04/11/2026 · Organização inicial da estrutura
 
-**Quem:** Victor Lopes Tavares da Fonseca
+**Prompt:** *"Com base no PDF do desafio (`Desafio-FIAP-GS-CitizenTech 1ES RJ.pdf`), vamos organizar a estrutura inicial do projeto para o tema 'Chuvas e encostas', separando as frentes em pastas próprias, README com a ficha e registro de apoio de IA."*
 
-**Prompts (texto exato):**
+**O que desenvolvemos e revisamos:**
+- Estruturei a organização do projeto por disciplina (`esp32/`, `python/`, `web/`, `matematica/`, `docs/experiencia/`, `docs/pitch/`, `README.md` e `prompts.md`), com repositórios separados para `esp32/`, `python/` e `web/`.
+- Executei verificações no módulo Python (falha de rede, `backup.json` corrompido, entradas inválidas e configuração inválida), consultas ao ThingSpeak e checagens de layout em desktop e mobile.
+- Consultei referências públicas sobre critérios de alerta e sirenes no Rio de Janeiro para contextualizar o problema.
 
-1. Uma lista de skills populares ("design-taste-frontend", "grilling", "agent-browser", "hyperframes", "find-skills", "Taste Skill", "Web Design Guidelines", "Awesome Design", "Image to Code", "Playwright CLI") com o pedido *"add todas essas skills pesquisando na internet"*.
-2. O PDF do desafio com *"quais skills me ajudariam a fazer isso e add todas"*.
-3. *"faz o projeto ai"* e, em seguida, *"utilize as skills para melhorar"*.
+**Etapas para conclusão e validação:**
+- [ ] Registrar o levantamento/referências de vivência em área de encosta em `docs/experiencia/`
+- [ ] Vincular o projeto no Wokwi (`481157574379012097`) e o canal no ThingSpeak (`3584820`) nos READMEs
+- [ ] Completar identificações, links (`TODO`) e preencher os `TODO`s do `AI.md`
+- [ ] Gravar o vídeo do pitch (até 3 minutos, com a personagem Dona Marlene)
+- [ ] Revisar e dominar cada função e linha implementada para explicação oral
 
-**O que a IA fez:** instalou as skills (pacotes de instruções para o Claude Code) e revisou cada parte do projeto com a skill correspondente. Rodou e testou tudo de novo.
+---
 
-| Parte | Skill usada | O que mudou |
+## Sessão 2 · 08/11/2026 · Revisão técnica, testes e separação de entregas
+
+**Responsável:** Victor Lopes Tavares da Fonseca (RM 571315)
+
+**Prompts:**
+1. *"Quais critérios e referências de boas práticas podemos aplicar para revisar front-end, usabilidade, testes de fluxo e organização do código?"*
+2. *"Considerando os requisitos do PDF do desafio, onde devemos focar a revisão técnica em cada frente do projeto?"*
+3. *"Vamos revisar e refinar os pontos críticos identificados em cada módulo, validando comportamento e legibilidade."*
+
+**Ajustes e validações realizadas:**
+
+| Frente | Pontos revisados | Melhorias aplicadas e conferidas |
 |---|---|---|
-| Lógica (Python) | `python-patterns` | Apelidos de tipo (`Config`, `Feed`, `Leitura`); `leitura_valida` para o histórico não derrubar o programa; `entry_id` inválido descartado; opção 7 (**busca binária** por horário) e opção 8 (**hoje × ontem**); `historico.json` e `relatorio.csv` gerados |
-| Interface (React) | `vercel-react-best-practices`, `web-design-guidelines`, `design-taste-frontend` (só o verificador), `playwright-cli` | `useRef` contra resposta velha; pausa a atualização com a aba escondida; foco no primeiro campo com erro; `autoComplete="off"` no ponto de referência; menu do topo com sinal de que rola no celular; placeholder que não corta. O verificador da `design-taste-frontend` achou: anel de foco quase invisível no "Ligar 199" (azul sobre vermelho, 1,12:1), botão "Ligar 199" cortado na primeira tela de um celular de 320 px, logo com 40 px de área de toque e formulário sem região de status fixa. Os quatro foram corrigidos e o verificador passou a aprovar. As regras dela de site institucional (uma seção por tela, fotos, efeitos) não se aplicam a um app de alerta e foram ignoradas. Teste automático no navegador: criar, editar, mudar situação, excluir, tema, simulador e API fora do ar |
-| Experiência | `user-story`, `docx` | Histórias reescritas com o "para" (o porquê); 14 critérios de aceite Dado/Quando/Então; indicadores de impacto e riscos; RF21 e RF22; relatório em `.docx` com capa e índice |
-| Pitch | `technical-video-script` | Roteiro em 10 trechos de 10 a 25 s com estado inicial, orçamento de tempo, plano de corte, capítulos e descrição do YouTube; "imagine a Dona Marlene" (personagem, não pessoa real) |
-| Matemática | `sympy` | `verificacao_simbolica.py`: o SymPy refaz as 13 contas feitas à mão (derivadas, integral, limites, regra da cadeia) e todas conferem; seção 5.4 no relatório; PDF gerado de novo |
-| Sensor (ESP32) | `arduino-code-generator` | Média de 8 leituras do ADC; espera máxima de 3 s pelo ThingSpeak. **Compilado e executado no Wokwi** pela primeira vez |
+| Lógica (`python/`) | Tipagem, validação e consultas | Tipagem (`Config`, `Feed`, `Leitura`), `leitura_valida`, descarte de `entry_id` inválido, busca binária por horário, comparativo hoje × ontem e exportação (`historico.json` e `relatorio.csv`) |
+| Interface (`web/`) | Estado, acessibilidade e fluxo | `useRef` contra resposta antiga, pausa de atualização com aba escondida, foco no primeiro campo inválido, `autoComplete="off"`, sinalização de rolagem no mobile, ajustes de contraste/espaçamento em tela estreita e testes de fluxo na interface |
+| Experiência (`docs/experiencia/`) | Requisitos e documentação | Histórias com objetivo do usuário, critérios de aceite, indicadores/riscos, RF21/RF22 e relatórios em `.md`, `.docx` e `.pdf` |
+| Pitch (`docs/pitch/`) | Estrutura e ritmo | Roteiro em 10 partes (até 3 min) com a personagem Dona Marlene (68 anos), integração das frentes e slides em PDF |
+| Matemática (`matematica/`) | Conferência algébrica | `verificacao_simbolica.py` conferindo derivadas, integrais, limites e regra da cadeia (19/19) e `modelo_encosta.py` (antecedência de ~1h51 com alerta em 70% de umidade) |
+| Sensor (`esp32/`) | Aquisição e estabilidade | Média de 8 leituras do ADC, timeout HTTP de 3 s e validação em simulação no Wokwi |
 
-**O que a equipe precisa conferir:** ler cada mudança acima e saber explicar, principalmente a busca binária (`buscar_por_horario`), o `useRef` em `useLeiturasEncosta` e o `verificacao_simbolica.py`.
+**Pontos de atenção para revisão:** Dominar e explicar a busca binária por horário (`buscar_por_horario`), o controle de referência em `useLeiturasEncosta` e a verificação simbólica em `verificacao_simbolica.py`.
 
-**Depois, na mesma sessão:** pedimos o histórico de commits (*"sim"*) e avisamos *"sao entregas separadas so a do site é junto"*. A IA separou o projeto em **3 repositórios independentes**: site (Front-end Design e Web Development juntos), sensor (Edge Computing) e Python. Cada um tem a Ficha da CitizenTech no topo do README, os integrantes, este `prompts.md` e a sua pasta de evidências. Matemática, Experiência e Pitch são arquivos entregues no Teams. Os commits foram feitos com a skill `git-commit`, uma parte por commit.
-
----
-
-## Sessão 3 · 18/11/2026 · Canal do ThingSpeak
-
-**Quem:** Victor Lopes Tavares da Fonseca
-
-**Prompts (texto exato):**
-
-1. *"oq falta fazer"*
-2. *"como crio o thingspeak"*
-3. A Write API Key e o número do canal, sem mais texto.
-4. Prints dos gráficos do ThingSpeak, da simulação no Wokwi e da execução do Python, e o link do projeto no Wokwi, sem mais texto.
-5. *"n vou fazer a conversa use dados de entrevistas na internet"*, com o nome completo e o RM do único integrante.
-6. O link do Wokwi de novo e a turma, sem mais texto.
-7. Os arquivos do kit de Python da disciplina (`main.py` inicial, `backup.json`, `prompts.md`, modelos de README) e o texto da tarefa no Teams, com *"vc ja tinha esses doc"*.
-
-**O que a IA fez:**
-
-- Listou as pendências e explicou passo a passo como criar a conta e o canal (4 campos, canal público, chaves).
-- Colocou o número do canal (**3584820**) no `CONFIG` do `main.py`, no `.env` e no `.env.example` do site e no README do sensor. Colocou a Write API Key no `sketch.ino`.
-- Achou um problema no Python: com o canal configurado mas ainda **vazio**, a opção 1 gravava a lista vazia por cima do `backup.json` e apagava os dados simulados. A IA corrigiu `obter_feeds`: o backup só é sobrescrito quando o canal devolve pelo menos uma leitura válida; se não, o programa usa o backup. O site já fazia isso (`useLeiturasEncosta`). Testou os dois casos (canal vazio e campos vazios) e o `backup.json` não mudou.
-- Conferiu os links do Wokwi. O primeiro (`305569599398609473`) era o exemplo "wifi-scan" do próprio Wokwi, não o nosso projeto. O segundo é o nosso: baixou o projeto e comparou com o repositório (`sketch.ino` idêntico, mesmas peças e ligações). Esse link foi para o README do sensor. O projeto salvo ficou sem o `libraries.txt`.
-- Olhou os prints dos gráficos e comparou cada leitura do canal com o Python (o risco bateu em todas). Apontou que os primeiros testes tinham inclinação de até 125° (estaca de cabeça para baixo) e que o PERIGO foi feito com 63°. Sugeriu limpar o canal e seguir o roteiro do README (accelX 0.10 = 5,7°) antes do print.
-- Salvou os prints do Wokwi (NORMAL, ATENÇÃO e PERIGO) e dos gráficos em `esp32/evidencias/` e mostrou as imagens no README do sensor.
-- Pelo print do Python (*"6 leituras · 0 novas · histórico 29"*), achou outro problema: o histórico juntava as leituras pelo `entry_id`, e o canal real recomeça do 1 (canal novo ou depois do Clear Channel), com os mesmos números da noite simulada. As leituras reais eram descartadas como repetidas. A IA trocou a chave para o horário (`mesclar_historico`) e passou a ordenar o histórico por horário, que é o que a busca binária precisa. Testou: 6 novas na primeira busca, 0 na segunda, e a busca binária certa nos dois dias.
-- Como a conversa com um morador não foi feita, trocou a entrevista por **depoimentos públicos com fonte**. Pesquisou reportagens (Lunetas, 2021; Folhapress, 2023; Agência Brasil, 2019) e um estudo científico (Melo et al., *Natural Hazards*, 2017), baixou as matérias para copiar as falas exatas e reescreveu a seção 3.1 do relatório de Experiência (`.md` e `.docx`). O relatório diz com clareza que não houve entrevista presencial, e as pessoas aparecem sem o nome, como pede a regra de dados pessoais. Por causa dos depoimentos, a história 5.5 (ponto de apoio no mapa) subiu de C para S.
-- Preencheu o integrante (projeto individual) nos READMEs, no `Integrantes.md`, na capa da matemática (gerou o PDF de novo) e no relatório de Experiência. Adaptou o roteiro do pitch para uma pessoa só e pôs a fala da moradora no beat 3. Bairro de referência: Morro do Borel (Tijuca). Validou o `.docx` com o verificador do formato Word. Depois, colocou a turma (1ESSRA-2026) nas tabelas e nas capas e conferiu que o projeto do Wokwi passou a ter o `libraries.txt` com as 5 bibliotecas.
-- Explicou que o kit de Python não tinha sido enviado antes (a sessão 1 recebeu só o PDF geral) e comparou o programa com ele. Todos os requisitos da tarefa já estavam atendidos, mas em quatro pontos o programa não seguia o kit. Mudou: o `relatorio.csv` agora sai com `;` e com as colunas `id;data;horario;...`, como o kit pede; o cabeçalho do `main.py` ganhou integrante, RM, CitizenTech e problema; o README do Python ganhou "De onde vêm os dados", um exemplo calculado à mão e uma tabela que liga cada requisito e nome de função do kit às funções e opções do nosso menu; e os textos que ainda falavam da noite simulada no `backup.json` foram corrigidos.
-- Conferiu pela API pública que o canal está aberto, com os 4 campos na ordem certa, e que recebeu a primeira entrada do Wokwi (#1: solo 46,3 %, inclinação 45°, risco 56,3, ATENÇÃO), o mesmo valor que a fórmula dá.
-
-**O que a equipe precisa conferir:** saber explicar por que uma busca vazia não pode apagar o `backup.json` (ele é o plano B quando não há internet), por que o histórico usa o horário e não o `entry_id` para não repetir leituras, de onde vieram os depoimentos da seção 3.1 (e por que eles não são uma entrevista própria) e por que 45° de inclinação com o solo seco dá só ATENÇÃO (a inclinação sozinha vale no máximo 40 pontos).
+**Separação de entregas:** Organizei `web/` (Front-end Design e Web Development no mesmo repositório), `esp32/` e `python/` como repositórios independentes, mantendo `prompts.md` idêntico entre eles.
 
 ---
 
-## Sessão 4 · 18/11/2026 · Revisão completa com skills
+## Sessão 3 · 18/11/2026 · Integração com ThingSpeak, Wokwi e alinhamento de entregas
 
-**Quem:** Victor Lopes Tavares da Fonseca
+**Responsável:** Victor Lopes Tavares da Fonseca (RM 571315)
 
-**Prompt (texto exato):** *"so o de py tinha mais coisa agr confira tudo cada linha tudo pra ver se acha algum erro e confira todos os requisitos use as skills para ajudar"*
+**Prompts:**
+1. *"Quais pendências ainda restam para concluir e validar todas as frentes do projeto?"*
+2. *"Como estruturar a configuração do canal no ThingSpeak (4 campos, visibilidade pública e chaves) para integrar com o projeto?"*
+3. *"Aqui estão os dados do canal ThingSpeak (ID 3584820 e Write API Key) para integrarmos e testarmos o fluxo de leitura."*
+4. *"Seguem os registros gráficos do ThingSpeak, da simulação no Wokwi, da execução do Python e o link do projeto no Wokwi para conferência."*
+5. *"Não farei entrevista presencial; vamos utilizar relatos e dados de fontes públicas verificáveis, preenchendo os dados individuais do projeto."*
+6. *"Segue o link atualizado do Wokwi e a identificação da turma (1ESSRA-2026) para conferência da documentação."*
+7. *"Considerando os arquivos de referência da disciplina de Python e o enunciado da atividade, vamos conferir aderência e ajustar o que for necessário."*
 
-**O que a IA fez:** leu os requisitos das 7 disciplinas no PDF do desafio e conferiu cada um nos arquivos. Revisou o código linha por linha com a skill `code-review` (Python, ESP32, site e matemática) e testou o site com a skill `playwright-cli`. A revisão achou 10 pontos, e a IA corrigiu 9:
+**Conferências e ajustes realizados:**
+- Configurei o canal público **3584820** (4 campos: umidade, inclinação, risco e faixa `0/1/2`) e as chaves/variáveis de ambiente nos módulos correspondentes.
+- Ajustei `obter_feeds` para não sobrescrever o `backup.json` quando a consulta retornar vazia, preservando o fallback local.
+- Conferi o projeto no Wokwi (`481157574379012097`), validando circuito/código e a presença de `libraries.txt`, e salvei evidências em `esp32/evidencias/`.
+- Cruzei os gráficos e logs com o cálculo de risco (umidade 30–90% com peso 0,6; inclinação 0–10° com peso 0,4; faixas < 40 NORMAL, 40–70 ATENÇÃO, ≥ 70 PERIGO), ajustando medições de teste fora do roteiro.
+- Ajustei `mesclar_historico` para deduplicar por `(entry_id, horário)` e manter a ordenação por horário para a busca binária.
+- Substituí a entrevista presencial por fontes públicas verificáveis na seção 3.1 do relatório de Experiência (com anonimização e registro explícito de que não houve entrevista direta), ajustando a história 5.5 e contextualizando no Morro do Borel (Tijuca).
+- Preenchi dados individuais e da turma (`1ESSRA-2026`) e alinhei o Python ao padrão esperado na disciplina (CSV com `;`, cabeçalho, origem dos dados, exemplo manual e mapeamento de requisitos/funções).
 
-| Parte | Problema | Correção | Como foi testado |
+**Pontos de domínio para revisão:** Explicar o papel do `backup.json` sem rede, a deduplicação por `(entry_id, horário)` e ordenação por horário, a procedência pública dos relatos na seção 3.1 e o cálculo de risco com limites e pesos.
+
+---
+
+## Sessão 4 · 18/11/2026 · Auditoria linha a linha e conferência de requisitos
+
+**Responsável:** Victor Lopes Tavares da Fonseca (RM 571315)
+
+**Prompt:** *"Vamos fazer uma auditoria linha a linha em todas as frentes e cruzar com os requisitos do edital para identificar possíveis inconsistências e validar os ajustes."*
+
+**Revisão e correções pontuais:**
+
+| Frente | Ponto identificado | Ajuste aplicado | Conferência |
 |---|---|---|---|
-| ESP32 × Python × site | Perto de 40 e 70, o ESP32 classificava com o risco sem arredondar, e os outros dois recalculavam com os valores arredondados (ex.: solo 30,0 % e 9,99° dava NORMAL no OLED e ATENÇÃO no site) | `arredondar` no `sketch.ino`: medidas e risco com a mesma precisão publicada, antes de classificar; o OLED mostra o risco com 1 casa | Força bruta em 229 mil combinações, imitando o float do ESP32: de 394 diferenças para 0 |
-| Python | Um campo "nan" ou "inf" virava nível 100 | `ler_medidas` descarta valores não finitos (`math.isfinite`) | Teste com nan, inf e -inf |
-| Python | Um `historico.json` editado à mão (horário sem fuso, risco em texto) derrubava o menu | `leitura_valida` confere o fuso e os números (`numero_valido`) | Teste com 6 itens inválidos |
-| Python | O PDF pede "entry_id num set" | `mesclar_historico` usa um set de pares (entry_id, horário) | Busca duas vezes: a segunda dá 0 novas |
-| Python | CSV com ponto decimal: o Excel em português não lê como número | `numero_br`: vírgula decimal | Leitura do CSV gerado |
-| Python | A busca por horário errava na virada do ano | `ler_horario` usa o ano anterior quando a data cairia depois da última leitura | Teste com histórico de 30/12 a 02/01 |
-| Site | Mostrava "Ao vivo" mesmo com a leitura de horas atrás | `FonteDados`: com mais de 5 min sem leitura nova, avisa que o sensor parou e mostra data e hora | No navegador, com o canal real |
-| Site | Primeira visita sem rede: mostrava a demonstração e escondia o botão Atualizar | O botão aparece sempre que há canal, e o texto diz "Sem conexão com o sensor" | No navegador, com o ThingSpeak bloqueado |
-| Site | Salvar a edição de um relato desfazia a mudança de situação feita no cartão; excluir o relato em edição deixava o formulário aberto | `SecaoRelatos` usa a versão mais nova do relato e fecha o formulário ao excluir | No navegador, com a API local (cópia do `db.json`) |
-| Matemática | O `verificacao_simbolica.py` não testava as funções do modelo, e a conta do total nunca podia falhar | A seção 5 compara as fórmulas do SymPy com as 6 funções do `modelo_encosta.py` | 19 de 19 conferem; com um sinal trocado de propósito no código, acusou o erro |
+| Sensor × Python × Web | Divergência de arredondamento próxima aos limiares (40 e 70) | Padronização do arredondamento antes da classificação e exibição com 1 casa decimal no OLED | Testes em lote simulando valores e limiares |
+| Python | Entradas não finitas (`nan`, `inf`, `-inf`) | Tratamento com `math.isfinite` em `ler_medidas` | Testes com valores `nan`, `inf` e `-inf` |
+| Python | Formato inválido em `historico.json` manual | Validação de fuso horário e valores numéricos (`numero_valido`) em `leitura_valida` | Testes com entradas inválidas |
+| Python | Controle de duplicidade por `(entry_id, horário)` | Uso de conjunto de pares em `mesclar_historico` | Execuções repetidas sem duplicação indevida |
+| Python | Separador decimal para planilha em pt-BR | Saída numérica com vírgula (`numero_br`) e separador `;` no CSV | Conferência do arquivo CSV gerado |
+| Python | Virada de ano na consulta por horário | Ajuste de ano de referência em `ler_horario` na transição de ano | Teste cobrindo 30/12 a 02/01 |
+| Web | Status "Ao vivo" com leitura defasada | Indicação de leitura antiga (> 5 min) com data e hora em `FonteDados` | Teste com dados reais do canal |
+| Web | Estado inicial sem conectividade | Exibição de ação de atualizar e mensagem de indisponibilidade sem ocultar o controle | Teste com bloqueio de rede no navegador |
+| Web | Conflito entre edição de relato e alteração de status | Sincronização do estado mais recente em `SecaoRelatos` e fechamento ao excluir | Teste de fluxo na interface |
+| Matemática | Cobertura das funções do modelo na validação simbólica | Comparação das expressões simbólicas com as funções de `modelo_encosta.py` | Verificação das funções e teste de falha proposital |
 
-Não mudou: `contar_altas_finais` e `contar_quedas_finais` são parecidas, mas separadas ficam mais fáceis de explicar. Também acrescentou a seção "Objetivo da solução" no README do sensor (item exigido em Edge) e atualizou os READMEs, o relatório de Experiência (RN07 e riscos) e o relatório de Matemática (PDF gerado de novo).
+Mantive separadas `contar_altas_finais` e `contar_quedas_finais` pela clareza de leitura e explicação; adicionei a seção de objetivo da solução no README do sensor e atualizei os documentos e relatórios correspondentes.
 
-**O que a equipe precisa conferir:** colar o `sketch.ino` novo no Wokwi e salvar; saber explicar o arredondamento no ESP32, o par (entry_id, horário) no histórico e o aviso de sensor parado no site.
-
----
-
-## Modelo para os próximos prompts
-
-```
-## Sessão N · DD/11/2026 · <assunto>
-**Quem:** <integrante>
-**Prompt:** <cole o texto exato>
-**O que veio:** <resumo>
-**O que mudamos / por quê:** <...>
-```
+**Próxima conferência:** Atualizar o código no Wokwi com a versão revisada, gerar o ZIP do site (`git archive`), publicar os 3 repositórios no GitHub e revisar as explicações técnicas antes da entrega (19/11/2026 às 23h55, pelo Teams).
